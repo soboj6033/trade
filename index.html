@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Trade With Talha 👑</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --royal-red: #ff0000;
+            --deep-ruby: #4a0000;
+            --vip-gold: #ffd700;
+            --soft-gold: #ffec8b;
+            --bg-black: #050000;
+        }
+
+        html, body {
+            margin: 0; padding: 0;
+            width: 100%; height: 100%;
+            overflow: hidden; 
+            background: radial-gradient(circle at center, #150000 0%, #000 100%);
+            display: flex; justify-content: center; align-items: center;
+            -webkit-user-select: none; user-select: none; touch-action: none;
+            position: relative;
+        }
+
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+        /* Droplet Animation */
+        .droplet {
+            position: absolute;
+            bottom: -20px;
+            background: linear-gradient(to top, var(--deep-ruby), var(--royal-red));
+            border-radius: 50%;
+            opacity: 0.3;
+            filter: blur(0.5px);
+            animation: rise linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes rise {
+            0% { transform: translateY(0) scale(1); opacity: 0; }
+            15% { opacity: 0.4; }
+            85% { opacity: 0.2; }
+            100% { transform: translateY(-110vh) scale(0.8); opacity: 0; }
+        }
+
+        /* VIP Card Style */
+        .card {
+            width: 92%; max-width: 400px; 
+            height: 650px;
+            padding: 25px 20px; border-radius: 50px 5px 50px 5px;
+            background: linear-gradient(135deg, rgba(15, 0, 0, 0.92), rgba(5, 0, 0, 0.98));
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 0, 0, 0.25);
+            box-shadow: 0 0 60px rgba(0,0,0,1), 0 0 20px rgba(255, 0, 0, 0.15);
+            position: relative; display: flex; flex-direction: column; 
+            z-index: 10; overflow: hidden;
+        }
+
+        .card::before {
+            content: ""; position: absolute; inset: -2px; border-radius: 52px 7px 52px 7px;
+            background: linear-gradient(45deg, transparent, var(--royal-red), transparent, var(--vip-gold), transparent);
+            z-index: -1; animation: borderRotate 8s infinite linear; opacity: 0.3;
+        }
+        @keyframes borderRotate { 100% { filter: hue-rotate(360deg); } }
+
+        /* Header Section */
+        .header-section { 
+            text-align: center; 
+            margin-top: 10px; 
+            transition: 0.4s ease; 
+            flex-shrink: 0;
+            /* Added flex layout to ensure perfect centering */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .header-section.shrunk { transform: scale(0.65); margin-top: -25px; margin-bottom: -15px; }
+
+        /* Logo Container Wrapper */
+        .logo-wrapper {
+            width: 90px; height: 90px; 
+            border-radius: 50%; 
+            border: 3px solid var(--vip-gold);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3); 
+            margin-bottom: 12px;
+            display: flex; justify-content: center; align-items: center;
+            overflow: hidden;
+            position: relative;
+            background: rgba(0,0,0,0.3); 
+            animation: float 4s infinite ease-in-out;
+            flex-shrink: 0; /* Prevents shrinking when screen is small */
+        }
+
+        .logo-img {
+            width: 100%; height: 100%; 
+            object-fit: cover; 
+            border-radius: 50%;
+            display: block;
+        }
+
+        .fallback-icon {
+            position: absolute;
+            color: #444;
+            font-size: 40px;
+            display: none;
+        }
+
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+        .logo-text { font-family: 'Cinzel Decorative', serif; font-size: 26px; font-weight: 900; color: #fff; text-shadow: 0 0 15px rgba(255, 0, 0, 0.8); margin: 0; line-height: 1.2; }
+        .header-bio { font-size: 9px; color: var(--soft-gold); letter-spacing: 2px; text-transform: uppercase; margin-top: 10px; border-top: 1px solid rgba(255, 215, 0, 0.2); border-bottom: 1px solid rgba(255, 215, 0, 0.2); padding: 4px 12px; }
+
+        /* Buttons & Content Body */
+        .content-body { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+        .btn-group { display: flex; flex-direction: column; gap: 12px; }
+        
+        .btn {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            text-decoration: none; padding: 16px; border-radius: 15px;
+            font-weight: 700; font-size: 12px; color: #fff; background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 0, 0, 0.2); transition: 0.3s; text-transform: uppercase;
+        }
+
+        .btn:hover { background: rgba(255, 0, 0, 0.1); border-color: var(--royal-red); }
+        .btn:active, .btn.active { 
+            background: linear-gradient(45deg, var(--deep-ruby), var(--royal-red)) !important; 
+            border-color: var(--vip-gold); 
+            transform: scale(0.98); 
+        }
+
+        /* Info Display */
+        .info-area {
+            display: none; flex-direction: column; background: rgba(0, 0, 0, 0.8);
+            padding: 20px; border-radius: 25px; border: 1px solid rgba(255, 0, 0, 0.4);
+            height: 400px; animation: slideUp 0.4s ease-out;
+        }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .info-title { color: var(--vip-gold); font-weight: 800; font-size: 15px; margin-bottom: 12px; text-transform: uppercase; border-bottom: 1px solid rgba(255, 215, 0, 0.2); padding-bottom: 8px; }
+        .info-scroll { overflow-y: auto; flex: 1; padding-right: 8px; text-align: left; }
+        .info-scroll::-webkit-scrollbar { width: 3px; }
+        .info-scroll::-webkit-scrollbar-thumb { background: var(--royal-red); }
+        .info-text { font-size: 13px; line-height: 1.6; color: #efefef; }
+        .line-divider { height: 1px; width: 100%; margin: 12px 0; background: rgba(255, 215, 0, 0.1); }
+        
+        /* Small Button Inline Style */
+        .mini-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 10px;
+            background: linear-gradient(45deg, var(--deep-ruby), var(--royal-red));
+            color: #fff;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 800;
+            text-decoration: none;
+            margin: 0 4px;
+            border: 1px solid var(--vip-gold);
+            vertical-align: middle;
+            text-transform: uppercase;
+        }
+        
+        .back-btn { margin-top: 12px; background: #1a1a1a; font-size: 11px; color: var(--vip-gold); padding: 12px; border: 1px solid #333; }
+
+        /* Bottom Section */
+        .bottom-section { margin-top: auto; padding-top: 15px; text-align: center; flex-shrink: 0; }
+        .social-row { display: flex; justify-content: center; gap: 22px; margin-bottom: 12px; }
+        .social-icon { color: #aaa; font-size: 20px; transition: 0.3s; }
+        .footer { font-size: 9px; color: #555; letter-spacing: 3px; font-weight: 700; text-transform: uppercase; }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+
+    <div class="card">
+        <div class="header-section" id="headerSection">
+            <!-- Fixed Centered Logo Container -->
+            <div class="logo-wrapper">
+                <img src="logo.jpg" alt="Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+                <i class="fas fa-user-tie fallback-icon"></i>
+            </div>
+            
+            <h1 class="logo-text">Trade With
+<br>Talha</h1>
+            <div class="header-bio" id="headerBio">WhatsApp Contact: +92 313 7627796</div>
+        </div>
+
+        <div class="content-body">
+            <div class="btn-group" id="btnGroup">
+                <a class="btn" href="https://t.me/TalhaTraderChannel" target="_blank" onclick="activateBtn(this)">
+                    <i class="fab fa-telegram-plane"></i> JOIN PUBLIC CHANNEL
+                </a>
+                <a class="btn" href="https://market-qx.trade/sign-up/?lid=1264248" target="_blank" onclick="activateBtn(this)">
+                    <i class="fas fa-gem"></i> OFFICIAL QUOTEX (VIP)
+                </a>
+                <a class="btn" href="javascript:void(0)" onclick="showArea('pinnedArea', this)">
+                    <i class="fas fa-thumbtack"></i> PINNED MESSAGE
+                </a>
+                <a class="btn" href="javascript:void(0)" onclick="showArea('policyArea', this)">
+                    <i class="fas fa-shield-alt"></i> VIP POLICY
+                </a>
+                <a class="btn" href="https://t.me/TWTsupport24h" target="_blank" onclick="activateBtn(this)">
+                    <i class="fas fa-headset"></i> ADMIN
+                </a>
+            </div>
+
+            <div class="info-area" id="pinnedArea">
+                <div class="info-title"><i class="fas fa-bullhorn"></i> VIP SERVICE INFO</div>
+                <div class="info-scroll">
+                    <div class="info-text">
+                        Welcome to our trading service. Here we ensure maximum accuracy.
+                        <div class="line-divider"></div>
+                        🎯 <b>Daily Signals:</b> We provide 5-10 high-quality signals daily.
+                        <div class="line-divider"></div>
+                        💰 <b>Money Management:</b> We will teach you proper risk management.
+                        <div class="line-divider"></div>
+                        To join our VIP channel,   
+                        <a href="https://market-qx.trade/sign-up/?lid=1264248" class="mini-btn" target="_blank">CLICK HERE</a>
+                        Open an account via this link, deposit a minimum of <b>$30</b>, and send a message.
+                    </div>
+                </div>
+                <button class="btn back-btn" onclick="showButtons()">BACK TO MENU</button>
+            </div>
+
+            <div class="info-area" id="policyArea">
+                <div class="info-title"><i class="fas fa-user-shield"></i> VIP RULES</div>
+                <div class="info-scroll">
+                    <div class="info-text">
+                        🛡️ <b>VIP Link Benefits:</b> You will receive support for all issues if you create an account with our link.
+                        <div class="line-divider"></div>
+                        🛠️ <b>Support:</b> We will assist with any Quotex or Binance related issues.
+                        <div class="line-divider"></div>
+                        ♻️ <b>Recovery:</b> We guarantee recovery if you incur losses after following our rules.
+                        <div class="line-divider"></div>
+                        ⚠️ <b>Warning:</b> We are not responsible for losses caused by ignoring money management.
+                    </div>
+                </div>
+                <button class="btn back-btn" onclick="showButtons()">BACK TO MENU</button>
+            </div>
+        </div>
+
+        <div class="bottom-section">
+            <div class="social-row">
+                <a href="https://m.facebook.com" class="social-icon" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.tiktok.com/@talhatrader12?_r=1&_t=ZS-96nZNCsicFQ" class="social-icon" target="_blank"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.instagram.com/talhatradewith/?utm_source=ig_web_button_share_sheet" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://youtube.com/@talhatraderyt?si=25wtmvnrKchz0HsR" class="social-icon" target="_blank"><i class="fab fa-youtube"></i></a>
+            </div>
+            <div class="footer">ELITE EDITION &bull; 2026</div>
+        </div>
+    </div>
+
+    <script>
+        function createDroplets() {
+            const body = document.body;
+            const dropletCount = 140; 
+            for (let i = 0; i < dropletCount; i++) {
+                const droplet = document.createElement('div');
+                droplet.className = 'droplet';
+                const size = Math.random() * 3 + 2; 
+                droplet.style.width = `${size}px`;
+                droplet.style.height = `${size}px`;
+                droplet.style.left = `${Math.random() * 100}vw`;
+                droplet.style.animationDuration = `${Math.random() * 6 + 4}s`;
+                droplet.style.animationDelay = `${Math.random() * 15}s`;
+                body.appendChild(droplet);
+            }
+        }
+        createDroplets();
+
+        function activateBtn(el) {
+            document.querySelectorAll('.btn').forEach(b => b.classList.remove('active'));
+            if(el) el.classList.add('active');
+        }
+
+        function showArea(id, el) {
+            activateBtn(el);
+            document.getElementById('headerSection').classList.add('shrunk');
+            document.getElementById('headerBio').style.display = 'none';
+            document.getElementById('btnGroup').style.display = 'none';
+            document.getElementById(id).style.display = 'flex';
+        }
+
+        function showButtons() {
+            document.getElementById('headerSection').classList.remove('shrunk');
+            document.getElementById('headerBio').style.display = 'inline-block';
+            document.querySelectorAll('.info-area').forEach(a => a.style.display = 'none');
+            document.getElementById('btnGroup').style.display = 'flex';
+            activateBtn(null);
+        }
+    </script>
+</body>
+</html>
